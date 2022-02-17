@@ -1,0 +1,68 @@
+DELETE http://localhost:8080/api/user/1
+Content-Type: application/json
+
+{}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 204, "Response status is not 204");
+});
+%}
+
+###
+PATCH http://localhost:8080/api/user/1
+Content-Type: application/json
+
+{}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 204, "Response status is not 204");
+});
+%}
+
+###
+PUT http://localhost:8080/api/user/1
+Content-Type: application/json
+
+{}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 204, "Response status is not 204");
+});
+%}
+
+###
+POST http://localhost:8080/api/user/1
+Content-Type: application/json
+
+{}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 204, "Response status is not 204");
+});
+%}
+
+###
+GET http://localhost:8080/api/user/1
+Accept: application/json
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+###
+GET http://localhost:8080/api/user
+Accept: application/json
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+###

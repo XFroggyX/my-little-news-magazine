@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"github.com/XFroggyX/my-little-news-magazine/internal/user"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net"
@@ -9,17 +9,18 @@ import (
 	"time"
 )
 
-func indexHandler(c *gin.Context) {
-	name := c.Query("name")
-	c.String(http.StatusOK, fmt.Sprintf("Hello, %s", name))
-}
-
 func main() {
 	router := gin.New()
 	router.Use(gin.Logger())
 
-	router.GET("/:name", indexHandler)
+	handler := user.NewHandler()
+	handler.Register(router)
 
+	run(router)
+}
+
+func run(router *gin.Engine) {
+	log.Println("Server run")
 	listener, err := net.Listen("tcp", ":8080")
 	if err != nil {
 		log.Println("listener error")
