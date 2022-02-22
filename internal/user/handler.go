@@ -1,16 +1,20 @@
 package user
 
 import (
+	logging "github.com/XFroggyX/go-logger"
 	"github.com/XFroggyX/my-little-news-magazine/internal/handlers"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 type handler struct {
+	logger logging.Logger
 }
 
-func NewHandler() handlers.Handler {
-	return &handler{}
+func NewHandler(logger logging.Logger) handlers.Handler {
+	return &handler{
+		logger: logger,
+	}
 }
 
 func (h *handler) Register(router *gin.Engine) {
